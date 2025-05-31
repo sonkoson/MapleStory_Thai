@@ -11,8 +11,6 @@ import database.DatabaseConnection;
 import handling.RecvPacketOpcode;
 import handling.SendPacketOpcode;
 import handling.channel.ChannelServer;
-import handling.channel.handler.FishingHandler;
-import handling.channel.handler.boss.BossHandler;
 import handling.login.LoginInformationProvider;
 import handling.world.MapleParty;
 import handling.world.MaplePartyCharacter;
@@ -2110,14 +2108,14 @@ public class PlayerHandler {
             case 400001050:
             case 400001042:
             case 400001043:
-                chr.메이플용사--;
+                chr.MapleWarrior--;
                 HashMap<SecondaryStat, Pair<Integer, Integer>> statups = new HashMap<SecondaryStat, Pair<Integer, Integer>>();
-                statups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(chr.메이플용사, 0));
+                statups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(chr.MapleWarrior, 0));
                 break;
             case 400011000:
-                chr.메이플용사--;
+                chr.MapleWarrior--;
                 HashMap<SecondaryStat, Pair<Integer, Integer>> statups1 = new HashMap<SecondaryStat, Pair<Integer, Integer>>();
-                statups1.put(SecondaryStat.AuraWeapon, new Pair<Integer, Integer>(chr.메이플용사, 0));
+                statups1.put(SecondaryStat.AuraWeapon, new Pair<Integer, Integer>(chr.MapleWarrior, 0));
                 break;
         }
 
@@ -12907,14 +12905,14 @@ public class PlayerHandler {
         final long COOLDOWN_TIME = 180000; // 180 seconds in milliseconds
 
         long currentTime = System.currentTimeMillis();
-        if (chr.메이플용사 < MAX_COUNT) {
-            chr.메이플용사++;
-            chr.오라웨폰++;
+        if (chr.MapleWarrior < MAX_COUNT) {
+            chr.MapleWarrior++;
+            chr.AuraWeapon++;
         }
 
         int skill = slea.readInt();
         slea.skip(4);
-        int stack = chr.메이플용사;
+        int stack = chr.MapleWarrior;
         boolean check = true;
         HashMap<SecondaryStat, Pair<Integer, Integer>> statups = new HashMap<SecondaryStat, Pair<Integer, Integer>>();
         c.getSession().writeAndFlush(CField.V_BLESS(skill, (byte) 1));
@@ -12936,14 +12934,14 @@ public class PlayerHandler {
 
         if (skill == 400001037) {
             SecondaryStatEffect yoyo = SkillFactory.getSkill(400001042).getEffect(1);
-            statups.put(SecondaryStat.VMatrixStackBuff, new Pair<Integer, Integer>(chr.오라웨폰, 0));
-            statups.put(SecondaryStat.MagicCircuitFullDrive, new Pair<Integer, Integer>(chr.오라웨폰, 0));
+            statups.put(SecondaryStat.VMatrixStackBuff, new Pair<Integer, Integer>(chr.AuraWeapon, 0));
+            statups.put(SecondaryStat.MagicCircuitFullDrive, new Pair<Integer, Integer>(chr.AuraWeapon, 0));
             c.getSession().writeAndFlush((Object) CWvsContext.BuffPacket.giveBuff(statups, yoyo, c.getPlayer()));
         }
 
         if (skill == 400011000) {
             SecondaryStatEffect yoyo = SkillFactory.getSkill(400011000).getEffect(1);
-            statups.put(SecondaryStat.AuraWeapon, new Pair<Integer, Integer>(chr.오라웨폰, 0));
+            statups.put(SecondaryStat.AuraWeapon, new Pair<Integer, Integer>(chr.AuraWeapon, 0));
             c.getSession().writeAndFlush((Object) CWvsContext.BuffPacket.giveBuff(statups, yoyo, c.getPlayer()));
         }
     }

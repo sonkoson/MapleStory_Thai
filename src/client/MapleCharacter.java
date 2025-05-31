@@ -13,7 +13,6 @@ import database.DatabaseConnection;
 import database.DatabaseException;
 import handling.channel.ChannelServer;
 import handling.channel.handler.AttackInfo;
-import handling.channel.handler.InventoryHandler;
 import handling.channel.handler.MatrixHandler;
 import handling.channel.handler.PlayerHandler;
 import handling.channel.handler.boss.BossHandler;
@@ -22,7 +21,6 @@ import handling.login.LoginServer;
 import handling.world.*;
 import handling.world.guild.MapleGuild;
 import handling.world.guild.MapleGuildCharacter;
-import maplecontents.Custom.MapleExtremeBoss;
 import provider.MapleData;
 import provider.MapleDataProviderFactory;
 import provider.MapleDataTool;
@@ -56,7 +54,6 @@ import tools.StringUtil;
 import tools.Triple;
 import tools.data.MaplePacketLittleEndianWriter;
 import tools.packet.*;
-import handling.channel.handler.boss.BossHandler;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -112,31 +109,31 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
     private boolean hellMode;
     public int JamsuTime = 0;
     public int Jamsu5m = 0;
-    public int 버닝타임;
-    public long 자동사냥;
-    public int 엔젤릭버스터임시;
+    public int BurningTime;
+    public long AutoHunt;
+    public int AngelicBusterTemp;
     public int AgonyBattackCount = 0;
-    public int 큐브스택 = 0;
+    public int CubeStack = 0;
     private int battleship123;
     public boolean isFirst = false;
     public boolean signofbomb = false;
     public int erdacount = 0, orgelcount = 20;
     public boolean orgelTime = false;
     private long lastSpawnBlindMobtime = System.currentTimeMillis();
-    // 카운트 스킬 스택
+    // Count skill stack
     private int CosmicCount, MomentumCount;
 
-    public int 래버너스 = 0;
+    public int Ravenous = 0;
     public int tesla = 0;
     public int PhotonRay_plus;
     private long MegidoFlameCount = 0;
-    public int 메이플용사 = 0;
-    public int 오라웨폰 = 0;
+    public int MapleWarrior = 0;
+    public int AuraWeapon = 0;
 
     private boolean israinbow;
     private boolean isnodeadRush;
     public long lastSaveTime, lastReportTime, lastMacroTime;
-    public java.util.Timer ConstentTimer;
+    public Timer ConstentTimer;
     private int SkillId;
     private int SkillId2;
     private int SkillId3;
@@ -20727,9 +20724,9 @@ public class MapleCharacter extends AnimatedMapleMapObject implements Serializab
 
     public int getCubeStack(int a) {
         a++;
-        a = 큐브스택;
+        a = CubeStack;
         //   System.err.println("출력되는 값  = " + a);
-        return this.큐브스택;
+        return this.CubeStack;
     }
 
     public void warpAfterScreen(final int bossNumber, final boolean isReactorBoss, final long screenDuration, final int mapId, final int minute, final byte deathCount, final int bossId, final Point pos, final ArrayList<Pair<Integer, Point>> bonusMonsterIdAndPositions) {

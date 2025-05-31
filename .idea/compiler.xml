@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for MapleStory_Thai" enabled="true">
+        <sourceOutputDir name="dist/generated-sources/annotations" />
+        <sourceTestOutputDir name="dist/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="maplestory" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="maplestory" options="-parameters" />
+    </option>
+  </component>
+</project>

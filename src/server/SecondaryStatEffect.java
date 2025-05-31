@@ -3,7 +3,6 @@ package server;
 import client.*;
 import client.inventory.Equip;
 import client.inventory.Item;
-import client.inventory.MapleInventory;
 import client.inventory.MapleInventoryType;
 import client.inventory.MaplePet;
 import client.status.MonsterStatus;
@@ -32,9 +31,6 @@ import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.*;
-import server.field.skill.SecondAtom;
-import tools.HexTool;
-import tools.packet.BossPacket;
 
 public class SecondaryStatEffect implements Serializable {
 
@@ -6605,13 +6601,13 @@ public class SecondaryStatEffect implements Serializable {
             }
             case 400001050: {
                 localstatups.put(SecondaryStat.IndiePmdR, new Pair<Integer, Integer>(Integer.valueOf(this.indiePmdR), localDuration));
-                localstatups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(applyfrom.메이플용사, localDuration));
+                localstatups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(applyfrom.MapleWarrior, localDuration));
                 break;
             }
             case 400011000: { //오라웨폰
                 localstatups.put(SecondaryStat.IndiePmdR, new Pair<Integer, Integer>(Integer.valueOf(this.indiePmdR), localDuration));
                 localstatups.put(SecondaryStat.IndieIgnoreMobPdpR, new Pair<Integer, Integer>(12, localDuration));
-                localstatups.put(SecondaryStat.AuraWeapon, new Pair<Integer, Integer>(applyfrom.메이플용사, localDuration));
+                localstatups.put(SecondaryStat.AuraWeapon, new Pair<Integer, Integer>(applyfrom.MapleWarrior, localDuration));
                 break;
             }
             case 400011010: {
@@ -8384,7 +8380,7 @@ public class SecondaryStatEffect implements Serializable {
                 int a = (int) (up / 100.0 * (double) this.x);
                 localstatups.put(SecondaryStat.IndieAllStat, new Pair<Integer, Integer>(a, localDuration));
                 localstatups.put(SecondaryStat.IndieDamR, new Pair<Integer, Integer>(Integer.valueOf(this.indieDamR), localDuration));
-                localstatups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(applyfrom.메이플용사, localDuration));
+                localstatups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(applyfrom.MapleWarrior, localDuration));
                 break;
             }
 
@@ -8667,7 +8663,7 @@ public class SecondaryStatEffect implements Serializable {
             case 400001043: {
                 localstatups.clear();
                 localstatups.put(SecondaryStat.IndieDamR, new Pair<Integer, Integer>((int) ((long) this.q + applyfrom.getSkillCustomValue0(400001043)), localDuration));
-                localstatups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(applyfrom.메이플용사, localDuration));
+                localstatups.put(SecondaryStat.Bless5th, new Pair<Integer, Integer>(applyfrom.MapleWarrior, localDuration));
                 break;
             }
             case 5221054: {

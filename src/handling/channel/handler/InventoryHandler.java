@@ -39,7 +39,6 @@ import java.awt.*;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.*;
@@ -2644,7 +2643,7 @@ public class InventoryHandler {
                 slea.readByte();
                 slea.readByte();
                 int select_hair = slea.readInt();
-                c.getPlayer().엔젤릭버스터임시 = select_hair;
+                c.getPlayer().AngelicBusterTemp = select_hair;
 
                 c.removeClickedNPC();
                 NPCScriptManager.getInstance().dispose(c);
@@ -2669,7 +2668,7 @@ public class InventoryHandler {
                 slea.readByte();
                 slea.readByte();
                 int select_face = slea.readInt();
-                c.getPlayer().엔젤릭버스터임시 = select_face;
+                c.getPlayer().AngelicBusterTemp = select_face;
 
                 c.removeClickedNPC();
                 NPCScriptManager.getInstance().dispose(c);
@@ -2696,7 +2695,7 @@ public class InventoryHandler {
                 slea.readByte();
                 int select_haircolor = slea.readInt();
                 int haircolor = (c.getPlayer().getHair() - (c.getPlayer().getHair() % 10)) + select_haircolor;
-                c.getPlayer().엔젤릭버스터임시 = haircolor;
+                c.getPlayer().AngelicBusterTemp = haircolor;
                 c.removeClickedNPC();
                 NPCScriptManager.getInstance().dispose(c);
                 c.getSession().writeAndFlush((Object) CWvsContext.enableActions(c.getPlayer()));
@@ -2721,7 +2720,7 @@ public class InventoryHandler {
                 int select_facecolor = slea.readInt();
                 int facecolor = 0;
                 facecolor = (c.getPlayer().getFace() - c.getPlayer().getFace() % 1000) + c.getPlayer().getFace() % 100 + 100 * select_facecolor;
-                c.getPlayer().엔젤릭버스터임시 = facecolor;
+                c.getPlayer().AngelicBusterTemp = facecolor;
                 c.removeClickedNPC();
                 NPCScriptManager.getInstance().dispose(c);
                 c.getSession().writeAndFlush((Object) CWvsContext.enableActions(c.getPlayer()));
@@ -2742,7 +2741,7 @@ public class InventoryHandler {
                 slea.readByte();
                 slea.readByte();
                 int select_skincolor = slea.readInt();
-                c.getPlayer().엔젤릭버스터임시 = select_skincolor;
+                c.getPlayer().AngelicBusterTemp = select_skincolor;
                 c.removeClickedNPC();
                 NPCScriptManager.getInstance().dispose(c);
                 c.getSession().writeAndFlush((Object) CWvsContext.enableActions(c.getPlayer()));

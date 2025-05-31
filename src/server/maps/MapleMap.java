@@ -11,7 +11,6 @@ import constants.KoreaCalendar;
 import constants.ServerConstants;
 import handling.channel.ChannelServer;
 import handling.channel.handler.PlayerHandler;
-import handling.channel.handler.boss.KalosPattern;
 import handling.world.MaplePartyCharacter;
 import handling.world.PartyOperation;
 import handling.world.World;
@@ -3280,9 +3279,9 @@ public final class MapleMap {
                 name = "익스트림" + name;
             }
             if (!ChannelServer.getInstance(1).버닝타임()) { //마리수조절
-                chr.버닝타임++;
-                if (chr.버닝타임 > 4500) {
-                    chr.버닝타임 = 0;
+                chr.BurningTime++;
+                if (chr.BurningTime > 4500) {
+                    chr.BurningTime = 0;
                     ChannelServer.getInstance(1).getFireWorks().giveSuns(chr, 1);
                 }
             }

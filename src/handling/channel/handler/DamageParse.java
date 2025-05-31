@@ -16,7 +16,6 @@ import server.SecondaryStatEffect;
 import server.field.skill.MapleMagicWreck;
 import server.field.skill.MapleSecondAtom;
 import server.field.skill.SecondAtom;
-import server.life.Element;
 import server.life.MapleLifeFactory;
 import server.life.MapleMonster;
 import server.life.MapleMonsterStats;
@@ -5666,9 +5665,9 @@ public class DamageParse {
                                 ArrayList<Integer> monsters = new ArrayList<Integer>();
                                 if (player.getMapId() == 921170004 || player.getMapId() == 921170011 || player.getMapId() == 921170012) {
                                     maxcount = 1;
-                                    if (player.자동사냥 < System.currentTimeMillis()) {
+                                    if (player.AutoHunt < System.currentTimeMillis()) {
                                         maxcount = 5;
-                                        player.자동사냥 = System.currentTimeMillis() + (30 * 1000);
+                                        player.AutoHunt = System.currentTimeMillis() + (30 * 1000);
                                     }
                                 }
                                 for (int i = 0; i < Randomizer.rand(1 + (int) (player.getKeyValue(99999, "triplingBonus") > 0 ? (player.getKeyValue(99999, "triplingBonus") * 1) : 0), maxcount); ++i) {
